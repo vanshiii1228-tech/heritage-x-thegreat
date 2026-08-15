@@ -14,7 +14,7 @@ const PIPS: number[][] = [
 ];
 
 export function DiceFace({ value, rolling, size = 64 }: Props) {
-  const pips = PIPS[Math.min(5, Math.max(0, value - 1))];
+  const pips = PIPS[Math.min(5, Math.max(0, value - 1))] ?? [4];
   return (
     <div
       className="dice-face grid grid-cols-3 grid-rows-3 gap-[2px] p-[10%]"
