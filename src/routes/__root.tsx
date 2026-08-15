@@ -77,10 +77,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "HeritageX" },
-      { name: "description", content: "A Journey Through India's Heritage & History" },
+      { title: "HeritageX — Indian Heritage Board Game" },
+      { name: "description", content: "Play HeritageX, a multiplayer spiral board game journeying through India's heritage sites with videos, quizzes and Heritage Points." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:title", content: "HeritageX — Indian Heritage Board Game" },
+      { name: "twitter:title", content: "HeritageX — Indian Heritage Board Game" },
+      { property: "og:description", content: "Play HeritageX, a multiplayer spiral board game journeying through India's heritage sites with videos, quizzes and Heritage Points." },
+      { name: "twitter:description", content: "Play HeritageX, a multiplayer spiral board game journeying through India's heritage sites with videos, quizzes and Heritage Points." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/614283b72e43dcfeab5d810cf7645358/id-preview-8cee6bec--a05f53ad-6850-44e1-9a67-aff8de45f6f8.lovable.app-1786793182498.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/614283b72e43dcfeab5d810cf7645358/id-preview-8cee6bec--a05f53ad-6850-44e1-9a67-aff8de45f6f8.lovable.app-1786793182498.png" },
     ],
     links: [
       {
@@ -93,7 +99,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700,900&family=Cinzel:wght@500;700&family=Mukta:wght@300;400;600;700&display=swap",
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
     ],
   }),
   shellComponent: RootShell,

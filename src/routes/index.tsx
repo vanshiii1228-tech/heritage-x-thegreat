@@ -34,7 +34,7 @@ export const Route = createFileRoute("/")({
       {
         property: "og:description",
         content:
-          "Roll the dice, travel the spiral, watch heritage videos and answer questions to win the journey through India's history.",
+          "Play HeritageX, a multiplayer spiral board game journeying through India's heritage sites with videos, quizzes and Heritage Points.",
       },
     ],
   }),
