@@ -220,7 +220,7 @@ export function spiralPositions(count = TILE_COUNT) {
   for (let i = 0; i < count; i++) {
     const t = i / (count - 1);
     const angle = t * turns * Math.PI * 2 + Math.PI;
-    const radius = 45 * (1 - t) + 1.5 * t;
+    const radius = i === count - 1 ? 0 : 45 * (1 - t) + 13 * t;
     out.push({
       x: 50 + radius * Math.cos(angle),
       y: 50 + radius * Math.sin(angle),
