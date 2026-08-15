@@ -132,6 +132,70 @@
   --sidebar-ring: oklch(0.551 0.027 264.364);
 }
 
+/* ---------------- HeritageX design system ---------------- */
+
+:root {
+  --background: oklch(0.19 0.045 35);
+  --foreground: oklch(0.96 0.02 85);
+  --card: oklch(0.25 0.055 38);
+  --card-foreground: oklch(0.96 0.02 85);
+  --popover: oklch(0.23 0.05 38);
+  --popover-foreground: oklch(0.96 0.02 85);
+  --primary: oklch(0.72 0.17 62);
+  --primary-foreground: oklch(0.2 0.05 40);
+  --secondary: oklch(0.32 0.08 25);
+  --secondary-foreground: oklch(0.95 0.02 85);
+  --muted: oklch(0.29 0.05 38);
+  --muted-foreground: oklch(0.78 0.04 70);
+  --accent: oklch(0.55 0.15 25);
+  --accent-foreground: oklch(0.97 0.02 85);
+  --destructive: oklch(0.55 0.2 25);
+  --destructive-foreground: oklch(0.97 0.02 85);
+  --border: oklch(0.42 0.09 60 / 45%);
+  --input: oklch(0.42 0.09 60 / 45%);
+  --ring: oklch(0.72 0.17 62);
+
+  --gold: oklch(0.82 0.15 85);
+  --gold-deep: oklch(0.62 0.13 70);
+  --saffron: oklch(0.74 0.18 55);
+  --maroon: oklch(0.35 0.11 25);
+  --teal: oklch(0.6 0.11 190);
+  --parchment: oklch(0.93 0.04 85);
+
+  --p1: oklch(0.85 0.02 90);
+  --p2: oklch(0.68 0.19 25);
+  --p3: oklch(0.74 0.18 55);
+  --p4: oklch(0.68 0.13 235);
+
+  --gradient-royal: linear-gradient(145deg, oklch(0.32 0.09 30), oklch(0.2 0.05 38));
+  --gradient-gold: linear-gradient(140deg, var(--gold), var(--gold-deep));
+  --gradient-board: radial-gradient(
+    circle at 50% 50%,
+    oklch(0.36 0.07 45) 0%,
+    oklch(0.26 0.06 35) 55%,
+    oklch(0.2 0.05 32) 100%
+  );
+  --shadow-elevated: 0 24px 60px -20px oklch(0 0 0 / 70%);
+  --shadow-gold: 0 0 0 1px oklch(0.82 0.15 85 / 45%), 0 12px 30px -12px oklch(0.72 0.17 62 / 60%);
+  --font-display: "Cinzel Decorative", "Cinzel", Georgia, serif;
+  --font-body: "Mukta", ui-sans-serif, system-ui, sans-serif;
+}
+
+@theme inline {
+  --color-gold: var(--gold);
+  --color-gold-deep: var(--gold-deep);
+  --color-saffron: var(--saffron);
+  --color-maroon: var(--maroon);
+  --color-teal: var(--teal);
+  --color-parchment: var(--parchment);
+  --color-p1: var(--p1);
+  --color-p2: var(--p2);
+  --color-p3: var(--p3);
+  --color-p4: var(--p4);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+}
+
 @layer base {
   * {
     border-color: var(--color-border);
@@ -140,5 +204,177 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-body);
+    background-image:
+      radial-gradient(circle at 12% 10%, oklch(0.4 0.09 45 / 35%), transparent 45%),
+      radial-gradient(circle at 88% 85%, oklch(0.35 0.1 25 / 35%), transparent 45%);
+    background-attachment: fixed;
   }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+  }
+}
+
+@utility hx-title {
+  font-family: var(--font-display);
+  background: var(--gradient-gold);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: 0.06em;
+}
+
+@utility hx-panel {
+  background: var(--gradient-royal);
+  border: 1px solid var(--gold-deep);
+  box-shadow: var(--shadow-elevated);
+  border-radius: var(--radius-3xl);
+}
+
+@utility hx-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--gold-deep);
+  background: var(--gradient-royal);
+  color: var(--parchment);
+  font-family: var(--font-display);
+  letter-spacing: 0.08em;
+  padding: 0.9rem 1.6rem;
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    filter 0.18s ease;
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-gold);
+  }
+  &:active {
+    transform: translateY(0);
+  }
+  &:disabled {
+    opacity: 0.45;
+    filter: grayscale(0.5);
+    transform: none;
+    cursor: not-allowed;
+  }
+}
+
+@utility hx-btn-gold {
+  background: var(--gradient-gold);
+  color: oklch(0.24 0.06 38);
+  font-weight: 700;
+}
+
+@utility hx-frame {
+  border: 1px solid var(--gold-deep);
+  box-shadow:
+    inset 0 0 0 3px oklch(0.82 0.15 85 / 12%),
+    var(--shadow-elevated);
+}
+
+@utility dice-face {
+  border-radius: 22%;
+  background: linear-gradient(150deg, oklch(0.97 0.02 85), oklch(0.85 0.04 80));
+  box-shadow:
+    inset 0 -6px 10px oklch(0.5 0.06 60 / 45%),
+    inset 0 4px 8px oklch(1 0 0 / 70%),
+    0 10px 18px -8px oklch(0 0 0 / 70%);
+  border: 1px solid oklch(0.62 0.13 70 / 70%);
+}
+
+@utility dice-pip {
+  border-radius: 9999px;
+  background: radial-gradient(circle at 35% 30%, oklch(0.45 0.12 30), oklch(0.28 0.09 28));
+  box-shadow: inset 0 -1px 2px oklch(0 0 0 / 45%);
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+@utility board-surface {
+  background: var(--gradient-board);
+  border: 2px solid var(--gold-deep);
+  box-shadow:
+    inset 0 0 60px oklch(0 0 0 / 55%),
+    inset 0 0 0 6px oklch(0.82 0.15 85 / 10%),
+    var(--shadow-elevated);
+}
+
+@keyframes dice-tumble {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.12);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+@keyframes glow-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 oklch(0.82 0.15 85 / 60%);
+  }
+  50% {
+    box-shadow: 0 0 0 10px oklch(0.82 0.15 85 / 0%);
+  }
+}
+
+@keyframes float-up {
+  0% {
+    opacity: 0;
+    transform: translateY(10px) scale(0.9);
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-70px) scale(1.15);
+  }
+}
+
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(-10vh) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh) rotate(720deg);
+    opacity: 0.9;
+  }
+}
+
+@keyframes shimmer {
+  0%,
+  100% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.25);
+  }
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 1.6s ease-out infinite;
+}
+.animate-float-up {
+  animation: float-up 1.6s ease-out forwards;
+}
+.animate-shimmer {
+  animation: shimmer 3s ease-in-out infinite;
+}
+.no-anim *,
+.no-anim {
+  animation: none !important;
+  transition: none !important;
 }
