@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useCallback, useEffect, useRef, useState } from "react";
 import {
-  CHARACTERS,
   DESTINATIONS,
   DESTINATION_TILES,
   TILE_COUNT,
@@ -67,6 +66,10 @@ function HeritageX() {
   const [toast, setToast] = useState<string | null>(null);
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const playersRef = useRef<Player[]>([]);
+  useEffect(() => {
+    playersRef.current = players;
+  }, [players]);
 
   /* ---------------- audio ---------------- */
   useEffect(() => {
@@ -205,19 +208,11 @@ function HeritageX() {
       await movePlayer(index, value, 1);
 
       // resolve landing
-      let landed = 0;
-      setPlayers((ps) => {
-        landed = ps[index]?.pos ?? 0;
-        return ps;
-      });
-      await sleep(60);
+      const landed = playersRef.current[index]?.pos ?? 0;
 
       if (landed >= TILE_COUNT - 1) {
-        setPlayers((ps) => {
-          const w = ps[index];
-          if (w) setWinner(w);
-          return ps;
-        });
+        const w = playersRef.current[index];
+        if (w) setWinner(w);
         beep(1200);
         return;
       }
@@ -426,5 +421,3 @@ function HeritageX() {
     </div>
   );
 }
-
-export { CHARACTERS };
